@@ -1,0 +1,248 @@
+ :root {
+    --bg-color: #0f172a;
+    --form-bg: #1e293b;
+    --primary-color: #6366f1;
+    --primary-hover: #818cf8;
+    --input-focus: #334155;
+    --color-general: #e74c3c;
+    --text-color: #e2e8f0;
+    --text-secondary: #cbd5e1;
+    --border-radius: 0.5rem;
+    --transition: all 0.3s ease-in-out;
+    --box-shadow: 0 0 15px #0000004d;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-alt: Verdana, Geneva, Tahoma, sans-serif;
+    --font-size-label: 1.2rem;
+    --font-size-footer: 0.9em;
+    --input-height: 2rem;
+    --input-padding: 0.5rem;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url('../assets/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: var(--font-main);
+  }
+  
+  .form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0.5rem;
+    overflow: auto;
+  }
+  
+  .form-container {
+    display: flex;
+    padding: 1rem;
+    width: 29rem;
+  }
+  
+  form {
+    background-color: #021e27cc;
+    backdrop-filter: blur(3px);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .form-fieldset {
+    border: none;
+    width: 100%;
+  }
+  
+  .form-title,
+  .form-terms label,
+  .form-footer p {
+    font-family: var(--font-alt);
+    color: var(--text-color);
+  }
+  
+  .form-title {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-bottom: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    position: relative;
+  }
+  
+  .form-group label {
+    font-size: var(--font-size-label);
+    font-weight: lighter;
+  }
+  
+  .form-group input {
+    background-color: var(--form-bg);
+    color: #777777;
+    border-radius: var(--border-radius);
+    height: var(--input-height);
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    outline: none;
+    padding-left: var(--input-padding);
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .form-group input:focus {
+    background-color: var(--input-focus);
+    transform: scale(1.02);
+  }
+  
+  .form-group .show-message-error {
+    color: #cabcbc;
+    font-size: 14px;
+    padding-left: var(--input-padding);
+    margin-top: 5px;
+  }
+  
+  .form-group input.error {
+    border: 1px solid var(--color-general);
+  }
+  
+  .form-terms,
+  .form-footer {
+    padding: 0.5rem;
+  }
+
+  .form-footer{
+    text-align: center;
+  }
+  
+  .form-terms label,
+  .form-footer p {
+    font-size: var(--font-size-footer);
+    font-weight: lighter;
+  }
+  
+  .form-terms label a,
+  .form-footer p a {
+    color: var(--text-color);
+    text-decoration: none;
+  }
+  
+  .form-terms label a:hover,
+  .form-footer p a:hover {
+    text-decoration: underline;
+  }
+  
+  .form-submit {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  
+  .form-submit button {
+    padding: var(--input-padding);
+    border-radius: var(--border-radius);
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    transition: background-color 0.2s;
+    filter: brightness(0.7);
+    cursor: not-allowed;
+  }
+
+  .form-group label, .form-terms label, .form-submit button, .form-footer{
+    letter-spacing: 0.05em;
+    color: var(--text-color);
+  }
+
+  .form-terms input{
+    margin-right: 5px;
+  }
+  
+  .form-submit button.enabled,
+  .form-submit button.cursor {
+    filter: brightness(1);
+    cursor: pointer;
+  }
+  
+  .form-submit button.enabled:hover {
+    background-color: var(--primary-hover);
+  }
+  
+
+  .tooltip-message{
+    word-break: break-word;
+    z-index: 9999;
+    display: inline-flex;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px #00000033;
+    font-size: clamp(10px, 2.5vw, 14px);
+    white-space: nowrap;
+    max-width: calc(100vw - 40px);
+    z-index: 9999;
+    animation: slideInFromBottom 0.4s ease-out;
+  }
+
+  .tooltip-message.error {
+    background-color: var(--color-general);
+  }
+  
+  .tooltip-message.success {
+    background-color: #2ecc71;
+  }
+  
+  .tooltip-message.info {
+    background-color: #3498db;
+  }
+
+@media screen and (min-width: 750px){
+  .tooltip-message {
+    transform: none;
+    left: initial;
+    right: 20px;
+    animation: slideInFromRight 0.4s ease-out;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
